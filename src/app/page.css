@@ -1,0 +1,46 @@
+.typewriter-container {
+  height: 100vh;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h4 {
+  font-size: 3.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  display: inline-block;
+  height: 3.5rem;
+  overflow: hidden;
+  color: #ff8800;
+  margin-left: 10px;
+}
+
+.words {
+  display: flex;
+  flex-direction: column;
+  animation: slideWords 10s infinite;
+}
+
+.words span {
+  height: 3.5rem;
+  line-height: 3.5rem;
+}
+
+@keyframes slideWords {
+  0%   { transform: translateY(0%); }
+  20%  { transform: translateY(0%); }
+  25%  { transform: translateY(-100%); }
+  45%  { transform: translateY(-100%); }
+  50%  { transform: translateY(-200%); }
+  70%  { transform: translateY(-200%); }
+  75%  { transform: translateY(-300%); }
+  95%  { transform: translateY(-300%); }
+  100% { transform: translateY(-400%); }
+}
