@@ -1,4 +1,4 @@
-'use client'; // needed if using app directory in Next.js
+'use client'; // Needed if using app directory in Next.js
 
 import { useEffect } from 'react';
 
@@ -13,13 +13,13 @@ interface TypewriterProps {
 export default function Typewriter({
   elementId,
   texts,
-  typingSpeed = 100,
-  erasingSpeed = 50,
-  delayBetweenTexts = 2000,
+  typingSpeed = 90,
+  erasingSpeed = 60,
+  delayBetweenTexts = 1300,
 }: TypewriterProps) {
   useEffect(() => {
     const element = document.getElementById(elementId);
-    if (!element) return; // ⛔️ Exit early if null
+    if (!element) return;
 
     let textIndex = 0;
     let charIndex = 0;
@@ -28,7 +28,7 @@ export default function Typewriter({
     function type() {
       const currentText = texts[textIndex % texts.length];
 
-      if (!element) return; // ⛔️ Guard inside the recursive call too
+      if (!element) return;
 
       if (isDeleting) {
         element.innerHTML = currentText.substring(0, charIndex - 1);
@@ -38,21 +38,24 @@ export default function Typewriter({
         charIndex++;
       }
 
+      let nextSpeed = isDeleting ? erasingSpeed : typingSpeed;
+
       if (!isDeleting && charIndex === currentText.length) {
+        // Done typing → wait, then start deleting
         isDeleting = true;
-        setTimeout(type, delayBetweenTexts);
+        nextSpeed = delayBetweenTexts;
       } else if (isDeleting && charIndex === 0) {
+        // Done deleting → move to next word
         isDeleting = false;
         textIndex++;
-        setTimeout(type, typingSpeed);
-      } else {
-        const speed = isDeleting ? erasingSpeed : typingSpeed;
-        setTimeout(type, speed);
+        nextSpeed = typingSpeed;
       }
+
+      setTimeout(type, nextSpeed);
     }
 
     type();
   }, [elementId, texts, typingSpeed, erasingSpeed, delayBetweenTexts]);
 
-  return null; // this component modifies the DOM externally
+  return null;
 }

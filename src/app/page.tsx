@@ -118,7 +118,7 @@ export default function Home() {
 
 
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-white/1 backdrop-blur-md">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-white/60 dark:bg-black/50 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center  h-16">
             <div className="flex-shrink-0 text-xl font-bold text-black hover:cursor-pointer">
@@ -137,23 +137,25 @@ export default function Home() {
       <FluidCursor />
 
       <div className="hero-sec flex justify-start align-middle ">
-        <div className="hero-sec-left relative top-35 left-30 bg-white/1 backdrop-blur-md w-160 h-70 p-5 mr-50 rounded-4xl hover:scale-102 transform transition-transform duration-300">
-          <div className="intro text-5xl font-bold ">
+        <div className="hero-sec-left relative top-35 left-30 bg-white/60 dark:bg-black/50 backdrop-blur-xl w-160 h-70 p-5 mr-50 rounded-4xl hover:scale-102 transform transition-transform duration-300">
+          <div className="intro text-5xl font-extrabold text-black drop-shadow-[0_2px_6px_rgba(255,255,255,0.9)]">
             I'm Mangesh
           </div>
 
           {/* TYPEWRITER */}
 
-          <div>
-            <h1 id="typewriter" className="typewriter text-1xl font-medium h-10 pt-2 pb-2"></h1>
-            <Typewriter
-              elementId="typewriter"
-              texts={['Full Stack Developer', 'Open Source Contributor', 'Tech Enthusiast']}
-              typingSpeed={90}
-              erasingSpeed={60}
-              delayBetweenTexts={1300}
-            />
+          <div className="text-3xl font-semibold text-black mt-2 mb-2">
+            I am <span id="typewriter"></span>
           </div>
+
+          <Typewriter
+            elementId="typewriter"
+            texts={["a web developer.", "a Full-stack devloper.", "a dedicated Learner."]}
+            typingSpeed={70}
+            erasingSpeed={30}
+            delayBetweenTexts={1100}
+          />
+
 
           <div className="disc">
             I’m a dedicated Computer Science Engineering student with a strong passion for solving
@@ -165,105 +167,167 @@ export default function Home() {
         </div>
       </div>
       <div className="hero-sec-right rounded-full left-80 h-100% w-90 transform transition-transform duration-300 ">
-          <img className='img-sec relative top-15 left-250 h-100% w-80 mt-10 hover:scale-105 transform transition-transform duration-300 bg-white/1 backdrop-blur-md flex-col rounded-full pt-5 border-b-gray-950' src={img.src} alt="" />
-        </div>
+        <img className='img-sec relative top-15 left-250 h-100% w-80 mt-10 hover:scale-105 transform transition-transform duration-300 bg-white/60 dark:bg-black/50 backdrop-blur-xl flex-col rounded-full pt-5 border-b-gray-950' src={img.src} alt="" />
+      </div>
 
       {/* SKILLS */}
 
       <div className="skills-sec flex justify-evenly align-middle ">
-        <div className="skills relative top-50 left-25 bg-white/5 backdrop-blur-md w-330 h-130 p-5 mr-50 rounded-4xl hover:scale-101 transform transition-transform duration-300 shadow-2xl mb-50">
-        <div className="heading flex justify-center align-middle text-4xl font-bold mb-5">
-          My Digital Toolbox
-        </div>
-        <div className="small-disc ml-20 mr-20 text-center text-gray-600 mb-13 ">
-          Based in Chh. Sambhajinagar, India, currently pursuing a B.Tech in Computer Science Engineering
-           and set to graduate in 2028. Focused on growing skills in full-stack web development,
-           data structures & algorithms, and exploring DevOps tools like Docker and Kubernetes.
-        </div>
+        <div className="skills relative top-50 left-25 bg-white/5 backdrop-blur-xl w-330 h-130 p-5 mr-50 rounded-4xl hover:scale-101 transform transition-transform duration-300 shadow-2xl mb-50">
+          <div className="heading flex justify-center align-middle text-4xl font-bold mb-5">
+            My Digital Toolbox
+          </div>
+          <div className="small-disc ml-20 mr-20 text-center text-gray-600 mb-13 ">
+            Based in Chh. Sambhajinagar, India, currently pursuing a B.Tech in Computer Science Engineering
+            and set to graduate in 2028. Focused on growing skills in full-stack web development,
+            data structures & algorithms, and exploring DevOps tools like Docker and Kubernetes.
+          </div>
           <div className="line-1 flex justify-evenly align-middle mt-2 mb-7" >
-            <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-5 pl-10 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl ">
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-5 pl-10 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)] ">
               <picture>
                 <img className='html-img h-17 flex justify-center align-middle' src={html.src} alt="" />
               </picture>
               <p className='txt flex align-middle justify-center pr-4 mt-3'>HTML</p>
             </div>
-            
-            <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-5 pl-9  rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
+
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-5 pl-9  rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
               <picture>
                 <img className='css-img h-17 flex justify-center align-middle ' src={css.src} alt="" />
               </picture>
               <p className='txt flex align-middle justify-center pr-4 mt-3'>CSS</p>
             </div>
-            <div className="sk-1 bg-white/1 backdrop-blur-md w-35 h-35 p-5 pl-10 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
+            <div className="sk-1 bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-5 pl-10 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
               <picture>
                 <img className='js-img h-17 flex justify-center align-middle' src={js.src} alt="" />
               </picture>
               <p className='txt flex align-middle justify-center pr-4 mt-3'>JAVASCRIPT</p>
             </div>
-            <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-7 pl-6 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-7 pl-6 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
               <picture>
                 <img className='tailwind-img h-14 flex justify-center align-middle' src={taiwind.src} alt="" />
               </picture>
               <p className='txt flex align-middle justify-center mt-4'>TAILWINDCSS</p>
             </div>
-            <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-5 pl-9 pt-7 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-5 pl-9 pt-7 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
               <picture>
                 <img className='react-img h-15 flex justify-center align-middle' src={react.src} alt="" />
               </picture>
               <p className='txt flex align-middle justify-center mt-3  pr-4'>REACT JS</p>
             </div>
-            <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-5 pl-8 pt-10 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
-            <picture>
-              <img className='node-img h-12 flex justify-center align-middle' src={node.src} alt="" />
-            </picture>
-            <p className='txt flex align-middle justify-center mt-3 pr-3'>NODE JS</p>
-          </div>
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-5 pl-8 pt-10 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
+              <picture>
+                <img className='node-img h-12 flex justify-center align-middle' src={node.src} alt="" />
+              </picture>
+              <p className='txt flex align-middle justify-center mt-3 pr-3'>NODE JS</p>
+            </div>
           </div>
 
           <div className="line-2 flex justify-evenly align-middle mt-4 mb-5">
-            
-          <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-5 pt-6 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
-            <picture>
-              <img className='mysql-img h-14 flex justify-center align-middle' src={mysql.src} alt="" />
-            </picture>
-            <p className='txt flex align-middle justify-center mt-5.5'>MYSQL</p>
-          </div>
-          <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-8 pl-10.5 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
-            <picture>
-              <img className='git-img h-14 flex justify-center align-middle' src={git.src} alt="" />
-            </picture>
-            <p className='txt flex align-middle justify-center mt-4 pr-2'>GITHUB</p>
-          </div>
-          <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-6 pl-10 pt-9 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
-            <picture>
-              <img className='docker-img h-13 flex justify-center align-middle' src={docker.src} alt="" />
-            </picture>
-            <p  className='txt flex align-midle justify-center mt-4 pr-3'>DOCKER</p>
-          </div>
-          <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-8 pl-10 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
-            <picture>
-              <img className='kubernet-img h-15 flex justify-center align-middle' src={kubernets.src} alt="" />
-            </picture>
-            <p  className='txt flex align-midle justify-center mt-3'>KUBERNETES</p>
-          </div>
-          <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-8 pl-8.5 pt-9 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
-            <picture>
-              <img className='bootstrap-img h-14 flex justify-center align-middle' src={bootstrap.src} alt="" />
-            </picture>
-            <p  className='txt flex align-midle justify-center mt-3'>BOOTSTRAP</p>
-          </div>
-          <div className="sk-1  bg-white/1 backdrop-blur-md w-35 h-35 p-8 pt-9 pl-11 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl">
-            <picture>
-              <img className='figma-img h-14 flex justify-center align-middle' src={figma.src} alt="" />
-            </picture>
-            <p  className='txt flex align-midle justify-center mt-3'>FIGMA</p>
-          </div>
+
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-5 pt-6 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
+              <picture>
+                <img className='mysql-img h-14 flex justify-center align-middle' src={mysql.src} alt="" />
+              </picture>
+              <p className='txt flex align-middle justify-center mt-5.5'>MYSQL</p>
+            </div>
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-8 pl-10.5 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
+              <picture>
+                <img className='git-img h-14 flex justify-center align-middle' src={git.src} alt="" />
+              </picture>
+              <p className='txt flex align-middle justify-center mt-4 pr-2'>GITHUB</p>
+            </div>
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-6 pl-10 pt-9 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
+              <picture>
+                <img className='docker-img h-13 flex justify-center align-middle' src={docker.src} alt="" />
+              </picture>
+              <p className='txt flex align-midle justify-center mt-4 pr-3'>DOCKER</p>
+            </div>
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-8 pl-10 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
+              <picture>
+                <img className='kubernet-img h-15 flex justify-center align-middle' src={kubernets.src} alt="" />
+              </picture>
+              <p className='txt flex align-midle justify-center mt-3'>KUBERNETES</p>
+            </div>
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-8 pl-8.5 pt-9 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
+              <picture>
+                <img className='bootstrap-img h-14 flex justify-center align-middle' src={bootstrap.src} alt="" />
+              </picture>
+              <p className='txt flex align-midle justify-center mt-3'>BOOTSTRAP</p>
+            </div>
+            <div className="sk-1  bg-white/60 dark:bg-black/50 backdrop-blur-xl w-35 h-35 p-8 pt-9 pl-11 rounded-2xl hover:scale-115 transform transition-transform duration-300 shadow-2xl  hover:shadow-[0_0_25px_rgba(0,200,255,0.6)]">
+              <picture>
+                <img className='figma-img h-14 flex justify-center align-middle' src={figma.src} alt="" />
+              </picture>
+              <p className='txt flex align-midle justify-center mt-3'>FIGMA</p>
+            </div>
           </div>
         </div>
       </div>
-      
+
       {/* FOOTER */}
-     
+      <footer className="text-center bg-white/60 dark:bg-black/50 backdrop-blur-xl border-t border-white/20 shadow-lg rounded-t-2xl mt-10 bottom-0">
+        <div className="container mx-auto text-gray-300 py-6 bottom-0">
+          {/* <!-- Links --> */}
+          <ul className="flex justify-center space-x-6 mb-4">
+            <li>
+              <a href="#about" className="transition hover:text-black hover:drop-shadow-[0_0_8px_rgba(0,195,255,0.7)]">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="#events" className="transition hover:text-black hover:drop-shadow-[0_0_8px_rgba(0,195,255,0.7)]">
+                Initiatives
+              </a>
+            </li>
+            <li>
+              <a href="mailto:wmangesh91@gmail.com" className="transition hover:text-black hover:drop-shadow-[0_0_8px_rgba(0,195,255,0.7)]">
+                Partner with Us
+              </a>
+            </li>
+          </ul>
+
+          {/* <!-- Social Icons --> */}
+          <ul className="flex justify-center space-x-6 mb-4">
+            <li>
+              <a href="https://www.linkedin.com/company/c-cube-geca/" target="_blank" className="text-gray-400 text-2xl transition hover:text-cyan-400 hover:drop-shadow-[0_0_10px_rgba(0,195,255,0.9)] hover:scale-110">
+                <i className="bi bi-linkedin"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/mangeshwagh91" target="_blank" className="text-gray-400 text-2xl transition hover:text-cyan-400 hover:drop-shadow-[0_0_10px_rgba(0,195,255,0.9)] hover:scale-110">
+                <i className="bi bi-github"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://facebook.com" target="_blank" className="text-gray-400 text-2xl transition hover:text-cyan-400 hover:drop-shadow-[0_0_10px_rgba(0,195,255,0.9)] hover:scale-110">
+                <i className="bi bi-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/ccube_community" target="_blank" className="text-gray-400 text-2xl transition hover:text-cyan-400 hover:drop-shadow-[0_0_10px_rgba(0,195,255,0.9)] hover:scale-110">
+                <i className="bi bi-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.com/invite/BhXNWdT3Fx" target="_blank" className="text-gray-400 text-2xl transition hover:text-cyan-400 hover:drop-shadow-[0_0_10px_rgba(0,195,255,0.9)] hover:scale-110">
+                <i className="bi bi-discord"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/channel/UCPQIu6FXWE623QatJjXaWxg" target="_blank" className="text-gray-400 text-2xl transition hover:text-cyan-400 hover:drop-shadow-[0_0_10px_rgba(0,195,255,0.9)] hover:scale-110">
+                <i className="bi bi-youtube"></i>
+              </a>
+            </li>
+          </ul>
+          {/* 
+    <!-- Copyright --> */}
+          <p className="text-sm text-gray-400">
+            © 2025 Mangesh's Portfolio. All rights reserved.
+          </p>
+        </div>
+      </footer>
+
+
     </div>
   );
 }
