@@ -15,8 +15,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Portfolio",
   description: "Interactive portfolio with an AI-powered Memoji that answers questions about me, my skills, and my experience",
-  keywords: [
-    "Toukoum", 
+  keywords: [ 
     "Portfolio", 
     "Developer", 
     "AI", 
@@ -30,14 +29,14 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Mangesh",
-      url: "https://toukoum.fr",
+      url: "",
     },
   ],
   creator: "Mangesh",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://toukoum.fr",
+    url: "",
     title: "Portfolio",
     description: "Interactive portfolio with an AI-powered Memoji that answers questions about me",
     siteName: "Portfolio",
