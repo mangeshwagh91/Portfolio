@@ -1,4 +1,3 @@
-// @ts-nocheck
 const useFluidCursor = () => {
   const canvas = document.getElementById('fluid');
   resizeCanvas();
@@ -905,7 +904,6 @@ const useFluidCursor = () => {
 
   function update() {
     const dt = calcDeltaTime();
-    // console.log(dt)
     if (resizeCanvas()) initFramebuffers();
     updateColors(dt);
     applyInputs();
@@ -1143,7 +1141,6 @@ const useFluidCursor = () => {
     update();
     updatePointerMoveData(pointer, posX, posY, color);
 
-    // Remove this event listener after the first mousemove event
     document.body.removeEventListener('mousemove', handleFirstMouseMove);
   });
 
@@ -1170,7 +1167,6 @@ const useFluidCursor = () => {
         updatePointerDownData(pointer, touches[i].identifier, posX, posY);
       }
 
-      // Remove this event listener after the first touchstart event
       document.body.removeEventListener('touchstart', handleFirstTouchStart);
     }
   );
@@ -1222,7 +1218,6 @@ const useFluidCursor = () => {
   }
 
   function updatePointerMoveData(pointer, posX, posY, color) {
-    // pointer.down = false;
     pointer.prevTexcoordX = pointer.texcoordX;
     pointer.prevTexcoordY = pointer.texcoordY;
     pointer.texcoordX = posX / canvas.width;
@@ -1322,7 +1317,7 @@ const useFluidCursor = () => {
     let hash = 0;
     for (let i = 0; i < s.length; i++) {
       hash = (hash << 5) - hash + s.charCodeAt(i);
-      hash |= 0; // Convert to 32bit integer
+      hash |= 0;
     }
     return hash;
   }

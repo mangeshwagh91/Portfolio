@@ -1,14 +1,12 @@
-﻿'use client';
-
 import FluidCursor from '@/components/FluidCursor';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ExternalLink, Star, Phone, MapPin, Code2 } from 'lucide-react';
 import { useState } from 'react';
 
-export default function Home() {
+export default function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     alert('Thank you! I will get back to you soon.');
     setFormData({ name: '', email: '', message: '' });
