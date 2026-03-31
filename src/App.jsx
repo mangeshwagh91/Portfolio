@@ -1,498 +1,249 @@
-import FluidCursor from '@/components/FluidCursor';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ExternalLink, Star, Phone, MapPin, Code2 } from 'lucide-react';
+import { Instagram, Twitter, Linkedin, ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
 
 export default function App() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Thank you! I will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
-  };
+  const [activeTab, setActiveTab] = useState('HOME');
 
-  const techStack = {
-    frontend: [
-      { name: 'HTML5', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-      { name: 'CSS3', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-      { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-      { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-      { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-      { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-      { name: 'Tailwind', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
-      { name: 'Bootstrap', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-    ],
-    backend: [
-      { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-      { name: 'Express', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg' },
-      { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-      { name: 'Django', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg' },
-      { name: 'PHP', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
-      { name: 'Java', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-    ],
-    database: [
-      { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-      { name: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-      { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-      { name: 'Firebase', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
-      { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-    ],
-    tools: [
-      { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-      { name: 'GitHub', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
-      { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-      { name: 'VS Code', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
-      { name: 'Figma', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
-    ],
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'HOME':
+        return <Home />;
+      case 'PROJECTS':
+        return <Projects />;
+      case 'ABOUT':
+        return <About />;
+      case 'CONTACT':
+        return <Contact />;
+      default:
+        return <Home />;
+    }
   };
-
-  const projects = [
-    {
-      title: 'E-Commerce Platform',
-      description: 'A full-featured online store with payment integration, admin dashboard, and real-time inventory management.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      github: '#',
-      live: '#',
-    },
-    {
-      title: 'Task Management App',
-      description: 'Collaborative project management tool with real-time updates, team chat, and progress tracking.',
-      tech: ['Next.js', 'TypeScript', 'Firebase', 'Tailwind'],
-      github: '#',
-      live: '#',
-    },
-    {
-      title: 'Social Media Dashboard',
-      description: 'Analytics dashboard for tracking social media metrics across multiple platforms with data visualization.',
-      tech: ['React', 'Python', 'PostgreSQL', 'Chart.js'],
-      github: '#',
-      live: '#',
-    },
-    {
-      title: 'Real Estate Website',
-      description: 'Modern real estate platform with property listings, search filters, and interactive maps.',
-      tech: ['Next.js', 'Express', 'MySQL', 'Google Maps'],
-      github: '#',
-      live: '#',
-    },
-  ];
 
   return (
-    <div className="relative bg-white">
-      <FluidCursor />
-      
-      <motion.nav 
-        initial={{ y: -100 }} 
-        animate={{ y: 0 }} 
-        className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <motion.div 
-              className="text-xl font-semibold text-gray-900"
-              whileHover={{ scale: 1.02 }}
-            >
-              <span className="text-blue-600">&lt;</span>
-              Portfolio
-              <span className="text-blue-600">/&gt;</span>
-            </motion.div>
-            <div className="hidden md:flex items-center space-x-1">
-              {['Home', 'Skills', 'Projects', 'About', 'Contact'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="px-4 py-2 text-sm text-gray-600 hover:text-blue-600 font-medium transition-colors"
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
+    <div className="min-h-screen bg-[#000000] font-sans text-stone-900 selection:bg-[#3E92CC]/20 overflow-x-hidden">
+      <div className="scale-[0.8] origin-top-right w-[125%] ml-[-25%] min-h-[125%] p-2 md:p-4">
+        {/* Top Navigation Bar */}
+        <motion.nav 
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="max-w-[1700px] mx-auto mb-8 bg-[#D2C9B6] rounded-[24px] p-6 flex justify-between items-center border-b-2 border-[#4A483F]/20 shadow-lg sticky top-8 z-50 backdrop-blur-md"
+        >
+          <div className="text-2xl font-bold tracking-tighter uppercase text-[#1A1A1A]">
+            HULI XYNPI
           </div>
-        </div>
-      </motion.nav>
-
-      <section id="home" className="relative min-h-screen flex items-center justify-center px-4 pt-20">
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-8">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              Available for new opportunities
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
-              Hi, I'm <span className="text-blue-600">Mangesh Wagh</span>
-              <br />
-              Full Stack Developer
-            </h1>
-            
-            <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-              I build scalable web applications with modern technologies. 
-              Passionate about creating seamless user experiences and clean code.
-            </p>
-            
-            <div className="flex gap-4 justify-center mb-8">
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+          <div className="hidden md:flex gap-10 text-[14px] font-bold tracking-[0.1em] uppercase text-[#1A1A1A]">
+            {['HOME', 'PROJECTS', 'ABOUT', 'CONTACT'].map((item) => (
+              <button
+                key={item}
+                onClick={() => setActiveTab(item)}
+                className={`hover:opacity-100 transition-opacity relative group ${activeTab === item ? 'opacity-100 underline decoration-2 underline-offset-8' : 'opacity-40'}`}
               >
-                Get in Touch
-              </motion.a>
-              <motion.a
-                href="#projects"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-medium hover:border-gray-400 transition-colors"
-              >
-                View Projects
-              </motion.a>
-            </div>
-            
-            <div className="flex gap-4 justify-center">
-              {[
-                { icon: <Github className="w-5 h-5" />, href: '#', bg: 'hover:bg-gray-100' },
-                { icon: <Linkedin className="w-5 h-5" />, href: '#', bg: 'hover:bg-blue-50' },
-                { icon: <Mail className="w-5 h-5" />, href: '#', bg: 'hover:bg-gray-100' },
-              ].map((social, i) => (
-                <motion.a
-                  key={i}
-                  href={social.href}
-                  whileHover={{ y: -3 }}
-                  className={`p-3 border border-gray-200 rounded-lg text-gray-600 ${social.bg} transition-colors`}
-                >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section id="skills" className="py-24 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Tech Stack
-            </h2>
-            <p className="text-lg text-gray-600">Technologies I work with</p>
-          </motion.div>
-          
-          {Object.entries(techStack).map(([category, technologies], idx) => (
-            <motion.div
-              key={category}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="mb-12"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <h3 className="text-2xl font-semibold text-gray-900 capitalize">
-                  {category}
-                </h3>
-                <div className="h-px flex-1 bg-gray-200" />
-              </div>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                {technologies.map((tech, i) => (
-                  <motion.div
-                    key={tech.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
-                    whileHover={{ y: -5 }}
-                    className="p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all text-center"
-                  >
-                    <img
-                      src={tech.logo}
-                      alt={tech.name}
-                      className="w-12 h-12 mx-auto mb-3"
-                    />
-                    <p className="text-sm font-medium text-gray-700">{tech.name}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section id="projects" className="py-24 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Featured Projects
-            </h2>
-            <p className="text-lg text-gray-600">Some of my recent work</p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, i) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group p-8 bg-white rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <Star className="w-6 h-6 text-yellow-500 fill-yellow-500" />
-                </div>
-                
-                <h3 className="text-2xl font-semibold text-gray-900 mb-3">{project.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-medium">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="flex gap-4">
-                  <a
-                    href={project.github}
-                    className="flex items-center gap-2 px-5 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-medium"
-                  >
-                    <Github className="w-4 h-4" />
-                    Code
-                  </a>
-                  <a
-                    href={project.live}
-                    className="flex-1 flex items-center justify-center gap-2 px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </a>
-                </div>
-              </motion.div>
+                {item}
+              </button>
             ))}
           </div>
-        </div>
-      </section>
+        </motion.nav>
 
-      <section id="about" className="py-24 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
+        <main className="max-w-[1700px] mx-auto min-h-fit">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+             key={activeTab}
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.6, ease: "easeOut" }}
+             className="pb-0"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              About Me
-            </h2>
-            <p className="text-lg text-gray-600">Get to know me better</p>
+            {renderContent()}
           </motion.div>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <div className="p-6 bg-white rounded-xl border border-gray-200">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">My Journey</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  I'm a Full Stack Developer passionate about creating seamless web experiences. 
-                  With expertise in modern technologies like React, Node.js, and cloud platforms, 
-                  I build scalable applications that solve real-world problems.
-                </p>
-              </div>
-              
-              <div className="p-6 bg-blue-600 text-white rounded-xl">
-                <div className="flex items-center gap-3 mb-4">
-                  <Code2 className="w-6 h-6" />
-                  <h3 className="text-2xl font-semibold">What I Do</h3>
-                </div>
-                <ul className="space-y-2">
-                  <li> Full Stack Web Development</li>
-                  <li> Cloud Architecture & Deployment</li>
-                  <li> Database Design & Optimization</li>
-                  <li> API Development & Integration</li>
-                </ul>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-2 gap-6"
-            >
-              {[
-                { number: '50+', label: 'Projects' },
-                { number: '30+', label: 'Clients' },
-                { number: '3+', label: 'Years' },
-                { number: '100%', label: 'Satisfaction' },
-              ].map((stat) => (
-                <motion.div
-                  key={stat.label}
-                  whileHover={{ scale: 1.05 }}
-                  className="p-8 bg-white rounded-xl border border-gray-200 text-center"
-                >
-                  <div className="text-4xl font-bold text-blue-600 mb-2">{stat.number}</div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
+        </main>
 
-      <section id="contact" className="py-24 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Let's Work Together
-            </h2>
-            <p className="text-lg text-gray-600">Have a project in mind? Get in touch</p>
-          </motion.div>
-          
-          <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="p-3 bg-blue-100 text-blue-600 rounded-lg">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500 font-medium">Email</p>
-                  <p className="text-lg font-semibold text-gray-900">mangeshwagh91@gmail.com</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="p-3 bg-green-100 text-green-600 rounded-lg">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500 font-medium">Phone</p>
-                  <p className="text-lg font-semibold text-gray-900">+91 XXXXX XXXXX</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="p-3 bg-orange-100 text-orange-600 rounded-lg">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500 font-medium">Location</p>
-                  <p className="text-lg font-semibold text-gray-900">Mumbai, India</p>
-                </div>
-              </div>
-              
-              <div className="pt-6">
-                <p className="text-sm text-gray-500 font-medium mb-4">Connect with me</p>
-                <div className="flex gap-4">
-                  <a href="#" className="p-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
-                    <Github className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
-                    <Mail className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.form
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              onSubmit={handleSubmit}
-              className="space-y-6"
-            >
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
-                  placeholder="Your name"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
-                  placeholder="your@email.com"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                <textarea
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all resize-none"
-                  placeholder="Tell me about your project..."
-                />
-              </div>
-              
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="w-full px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
-              >
-                Send Message
-              </motion.button>
-            </motion.form>
+        {/* Footer */}
+        <footer className="max-w-7xl mx-auto mt-0 mb-0 py-1 text-center">
+          <div className="text-[10px] font-bold tracking-[0.4em] text-white/30 uppercase">
+            DESIGNED BY MANGESH // 2026
           </div>
-          
-          <div className="mt-24 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-gray-500"> 2025 Mangesh Wagh. All rights reserved.</p>
-            <div className="flex gap-8">
-              <a href="#home" className="text-gray-500 hover:text-gray-900 transition-colors">Home</a>
-              <a href="#skills" className="text-gray-500 hover:text-gray-900 transition-colors">Skills</a>
-              <a href="#projects" className="text-gray-500 hover:text-gray-900 transition-colors">Projects</a>
-              <a href="#about" className="text-gray-500 hover:text-gray-900 transition-colors">About</a>
-            </div>
-          </div>
-        </div>
-      </section>
+        </footer>
+      </div>
     </div>
   );
 }
+
+const Home = () => (
+  <div className="flex flex-col gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-12 auto-rows-min gap-4">
+      {/* The Main Project Showcase (Top-Left Large Card) */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        whileHover={{ scale: 1.005 }}
+        className="md:col-span-8 bg-[#D2C9B6] rounded-[24px] p-8 md:p-12 relative overflow-hidden border-[4px] border-[#3E92CC] shadow-2xl min-h-[500px] flex flex-col justify-center"
+      >
+        <div className="relative z-10 max-w-2xl text-left">
+          <h1 className="text-5xl md:text-[56px] font-bold leading-[1.1] tracking-tighter mb-8 text-[#1A1A1A]">
+            Pioneer <br />
+            <span className="text-[#3E92CC]">Revolutionizing</span> <br />
+            Design with <br /> 
+            AI-Enhanced <br />
+            Architecture
+          </h1>
+          <button className="bg-[#1A1A1A] w-fit text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest hover:bg-[#3E92CC] transition-all flex items-center gap-3 group shadow-xl hover:shadow-[#3E92CC]/20">
+            See the Revolution <ArrowUpRight className="w-6 h-6 group-hover:rotate-45 transition-transform" />
+          </button>
+        </div>
+        
+        <div className="absolute top-12 right-12 w-64 h-64 opacity-10 rotate-[15deg]">
+          <svg viewBox="0 0 100 100" className="w-full h-full stroke-[#1A1A1A] fill-none stroke-[0.2]">
+            {[...Array(36)].map((_, i) => (
+              <ellipse key={i} cx="50" cy="50" rx="45" ry="10" transform={`rotate(${i * 5} 50 50)`} />
+            ))}
+          </svg>
+        </div>
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        whileHover={{ scale: 1.02 }}
+        className="md:col-span-4 bg-[#D2C9B6] rounded-[24px] overflow-hidden relative border border-[#1A1A1A]/5 h-[500px] shadow-xl"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1540567705191-4df163d81b3f?q=80&w=2070&auto=format&fit=crop" 
+          alt="Huli Xynpi"
+          className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-110"
+        />
+        <div className="absolute bottom-10 left-10 bg-black/40 backdrop-blur-xl px-6 py-3 rounded-2xl border border-white/10 text-white text-[14px] font-bold tracking-[0.2em] uppercase z-20">
+          PORTRAIT
+        </div>
+      </motion.div>
+    </div>
+
+    {/* Secondary Section to encourage scrolling */}
+    <div className="grid grid-cols-1 md:grid-cols-12 auto-rows-min gap-4">
+      {/* The Contact and "About Me" Section */}
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        whileHover={{ scale: 1.005 }}
+        className="md:col-span-6 bg-[#4A483F] rounded-[24px] p-12 flex flex-col justify-between text-[#F5F5F0] shadow-2xl min-h-[400px]"
+      >
+        <div>
+          <span className="text-[#3E92CC] font-bold text-[16px] tracking-[0.2em] uppercase block mb-8">Have a Question??</span>
+          <h2 className="text-6xl md:text-[60px] font-bold tracking-tighter uppercase text-white/95 leading-none">
+            Let's <br /> Connect
+          </h2>
+        </div>
+        
+        <div className="flex justify-between items-end">
+           <button className="w-24 h-24 bg-[#D2C9B6] text-[#1A1A1A] rounded-full flex items-center justify-center hover:bg-[#3E92CC] hover:text-white transition-all group shadow-2xl">
+              <ArrowUpRight className="w-10 h-10 group-hover:rotate-45 transition-transform" />
+           </button>
+           <div className="flex flex-col gap-4 text-right">
+              {['INSTAGRAM', 'TWITTER', 'LINKEDIN'].map(social => (
+                <a key={social} href="#" className="text-[14px] font-bold tracking-[0.3em] opacity-40 hover:opacity-100 transition-all hover:text-[#3E92CC]">{social}</a>
+              ))}
+           </div>
+        </div>
+      </motion.div>
+
+      {/* The Middle Bio Section */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        className="md:col-span-6 bg-[#D2C9B6] rounded-[24px] p-16 flex flex-col justify-center items-center shadow-xl text-center relative overflow-hidden"
+      >
+        <div className="relative z-10">
+          <p className="text-2xl md:text-3xl leading-snug text-[#1A1A1A]/90 font-medium italic mb-10 max-w-md">
+            "We craft personalized digital and architectural soundtracks for the modern world."
+          </p>
+          <div className="h-[3px] w-24 bg-[#3E92CC] mx-auto"></div>
+        </div>
+        {/* Background Decorative Text */}
+        <div className="absolute -bottom-10 -right-10 text-[180px] font-black opacity-[0.03] pointer-events-none uppercase tracking-tighter">
+          BIO
+        </div>
+      </motion.div>
+    </div>
+  </div>
+);
+const Projects = () => (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+    {[
+      { title: 'ACKINO', category: 'Architecture', img: 'https://images.unsplash.com/photo-1540567705191-4df163d81b3f' },
+      { title: 'MANUS', category: 'Robotics', img: 'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9' },
+      { title: 'XZPIU', category: 'Digital Art', img: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f' },
+      { title: 'QUATRZ', category: 'Product Design', img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa' },
+      { title: 'PTROBO', category: 'Automotive', img: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7' },
+      { title: 'VIXEN', category: 'Fashion', img: 'https://images.unsplash.com/photo-1539109132332-3cf0889f81cc' }
+    ].map((project, i) => (
+      <motion.div
+        key={i}
+        whileHover={{ y: -10 }}
+        className="bg-[#D2C9B6] rounded-[24px] overflow-hidden group shadow-lg"
+      >
+        <div className="h-[400px] overflow-hidden relative">
+          <img src={project.img} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+          <div className="absolute top-6 left-6 bg-black/50 backdrop-blur-md px-4 py-2 rounded-xl text-white text-[12px] font-bold uppercase tracking-widest">{project.category}</div>
+        </div>
+        <div className="p-8 flex justify-between items-center bg-[#D2C9B6]">
+          <h3 className="text-2xl font-bold tracking-tighter uppercase">{project.title}</h3>
+          <ArrowUpRight className="w-6 h-6 group-hover:text-[#3E92CC] transition-colors" />
+        </div>
+      </motion.div>
+    ))}
+  </div>
+);
+
+const About = () => (
+  <div className="flex flex-col gap-24">
+    <motion.div className="bg-[#D2C9B6] rounded-[24px] p-16 shadow-2xl relative overflow-hidden">
+      <h2 className="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-12 leading-none relative z-10">
+        Multi-Disciplinary <br /><span className="text-[#3E92CC]">Creative Lab</span>
+      </h2>
+      <div className="grid md:grid-cols-2 gap-16 relative z-10">
+        <p className="text-xl md:text-2xl leading-relaxed text-[#1A1A1A]/80 font-medium">
+          HULI XYNPI is a design powerhouse founded on the intersection of biological patterns and machine intelligence. Based at the edge of the digital frontier, we craft environments that breathe and objects that think.
+        </p>
+        <div className="space-y-8">
+          {['Global Architectural Awards 2024', 'AI Design Innovation Prize', 'Sustainable Future Medal'].map(item => (
+            <div key={item} className="flex items-center gap-6 border-b border-[#1A1A1A]/10 pb-4">
+              <div className="w-3 h-3 bg-[#3E92CC] rounded-full"></div>
+              <span className="text-lg font-bold uppercase tracking-tight">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  </div>
+);
+
+const Contact = () => (
+  <div className="bg-[#4A483F] rounded-[24px] p-16 md:p-24 shadow-2xl min-h-[700px] flex flex-col justify-center relative overflow-hidden">
+    <div className="max-w-4xl mx-auto w-full relative z-10">
+      <h2 className="text-7xl md:text-9xl font-black tracking-tighter uppercase text-white mb-20 leading-none">
+        Let's <br /> Create <br /> <span className="text-[#3E92CC]">Together</span>
+      </h2>
+      <div className="grid md:grid-cols-2 gap-20">
+        <div className="space-y-12">
+          <div className="space-y-2">
+             <label className="text-[14px] font-bold text-white/40 uppercase tracking-widest">Email us at</label>
+             <div className="text-2xl md:text-4xl font-bold text-white border-b-4 border-[#3E92CC] pb-2 w-fit">hello@hulixynpi.lab</div>
+          </div>
+          <div className="flex gap-8">
+             {['IG', 'TW', 'LI'].map(s => (
+               <a key={s} href="#" className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center text-white font-bold hover:bg-[#3E92CC] hover:border-[#3E92CC] transition-all">{s}</a>
+             ))}
+          </div>
+        </div>
+        <form className="space-y-8">
+          <input type="text" placeholder="YOUR NAME" className="w-full bg-transparent border-b-2 border-white/10 p-4 text-white font-bold uppercase tracking-widest placeholder:text-white/20 focus:border-[#3E92CC] outline-none transition-all" />
+          <input type="email" placeholder="YOUR EMAIL" className="w-full bg-transparent border-b-2 border-white/10 p-4 text-white font-bold uppercase tracking-widest placeholder:text-white/20 focus:border-[#3E92CC] outline-none transition-all" />
+          <button className="bg-white text-[#1A1A1A] px-12 py-6 rounded-full font-bold uppercase tracking-[0.2em] hover:bg-[#3E92CC] hover:text-white transition-all shadow-2xl">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+);
