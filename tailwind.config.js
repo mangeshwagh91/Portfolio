@@ -7,59 +7,37 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
-        },
-        beige: {
-          light: "#F5F5F0",
-          taupe: "#E8E8E0",
-        },
-        charcoal: {
-          DEFAULT: "#1A1A1A",
-          warm: "#2D2D2A",
-        },
+        background: '#1A1A1A', // Deep Charcoal Black
+        card: '#D2C9B1',       // Soft Beige/Khaki
+        'card-dark': '#3C3C34', // Darker Olive-Grey for Contact
+        foreground: '#1A1A1A',  // Dark Text on Beige
+        'foreground-light': '#D2C9B1', // Beige Text on Charcoal
+      },
+      borderRadius: {
+        '4xl': '2.5rem',
+        '5xl': '3.5rem',
+      },
+      fontFamily: {
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        swiss: ['"Neue Haas Grotesk"', '"Inter"', 'sans-serif'],
       },
       animation: {
-        'gradient-x': 'gradient-x 15s ease infinite',
-        'gradient-y': 'gradient-y 15s ease infinite',
-        'gradient-xy': 'gradient-xy 15s ease infinite',
-        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'noise': 'noise 0.2s infinite',
       },
       keyframes: {
-        'gradient-y': {
-          '0%, 100%': {
-            'background-size': '400% 400%',
-            'background-position': 'center top'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'center center'
-          }
+        noise: {
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '10%': { transform: 'translate(-5%, -5%)' },
+          '20%': { transform: 'translate(-10%, 5%)' },
+          '30%': { transform: 'translate(5%, -10%)' },
+          '40%': { transform: 'translate(-5%, 15%)' },
+          '50%': { transform: 'translate(-10%, 5%)' },
+          '60%': { transform: 'translate(15%, 0)' },
+          '70%': { transform: 'translate(0, 10%)' },
+          '80%': { transform: 'translate(-15%, 0)' },
+          '90%': { transform: 'translate(10%, 5%)' },
         },
-        'gradient-x': {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          }
-        },
-        'gradient-xy': {
-          '0%, 100%': {
-            'background-size': '400% 400%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          }
-        }
-      }
+      },
     },
   },
   plugins: [],
