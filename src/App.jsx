@@ -5,11 +5,13 @@ import ProjectShowcase from './components/ProjectShowcase';
 import About from './components/About';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
+import FluidCursor from './components/FluidCursor';
 
 function App() {
   return (
-    <main className='bg-background min-h-screen text-[#D2C9B1] relative selection:bg-card selection:text-background'>
+    <main className='bg-[#1A1A1A] min-h-screen text-[#D2C9B1] relative selection:bg-card selection:text-background'>
       <GrainyNoise />
+      <FluidCursor />
       <Navbar />
       
       <div className='flex flex-col'>

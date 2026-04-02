@@ -11,13 +11,6 @@ export default function About() {
              <span className='italic italic text-card/40'>ROBUST</span> <br />
              CODE
            </h2>
-           <div className='space-y-4'>
-             <p className='text-xs font-black tracking-widest text-white/40 uppercase'>EDUCATION</p>
-             <div className='flex flex-col gap-2'>
-                <span className='text-3xl font-bold text-card uppercase'>B.TECH CSE '28</span>
-                <span className='text-xl italic text-card/60 uppercase'>GECA | CGPA 8.7</span>
-             </div>
-           </div>
         </div>
 
         <div className='flex flex-col gap-12 justify-center'>
