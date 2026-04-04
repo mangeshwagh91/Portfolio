@@ -21,14 +21,14 @@ export default function About() {
              viewport={{ once: true }}
              className='text-2xl md:text-3xl font-medium leading-relaxed italic text-card uppercase'
            >
-             'MANGESH IS A MULTIDISCIPLINARY DEVELOPER FOCUSED ON THE INTERSECTION OF PREDICTIVE ML AND SCALABLE WEB INFRASTRUCTURE.'
+             'I AM A MULTIDISCIPLINARY DEVELOPER FOCUSED ON THE INTERSECTION OF PREDICTIVE ML AND SCALABLE WEB INFRASTRUCTURE.'
            </motion.p>
            <div className='grid grid-cols-1 md:grid-cols-2 gap-8 text-sm md:text-base text-card/60 leading-relaxed font-bold uppercase'>
               <p>
-                From building hallucination detection systems for IIT Roorkee to representing GECA at SIH '25 National Finals, he consistently pushes the boundaries of GenAI integration.
+                From building hallucination detection systems for IIT Roorkee to representing GECA at SIH '25 National Finals, I consistently push the boundaries of GenAI integration.
               </p>
               <p>
-                As the Technical Head of the C-Cube Coding Club, he leads a team of developers focused on modern open-source contribution and rigorous algorithmic design.
+                As the Technical Head of the C-Cube Coding Club, I lead a team of developers focused on modern open-source contribution and rigorous algorithmic design.
               </p>
            </div>
            

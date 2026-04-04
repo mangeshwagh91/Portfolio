@@ -1,6 +1,17 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 export default function BentoGrid() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -18,13 +29,15 @@ export default function BentoGrid() {
   };
 
   return (
-    <motion.section 
-      variants={containerVariants}
-      initial='hidden'
-      whileInView='visible'
-      viewport={{ once: true }}
-      className='container mx-auto grid min-h-screen grid-cols-1 md:grid-cols-4 md:grid-rows-6 gap-6 p-6 pt-32'
-    >
+    <div ref={containerRef} className='relative overflow-hidden'>
+      <motion.section 
+        style={{ y, opacity, scale }}
+        variants={containerVariants}
+        initial='hidden'
+        whileInView='visible'
+        viewport={{ once: true }}
+        className='container mx-auto grid min-h-screen grid-cols-1 md:grid-cols-4 md:grid-rows-6 gap-6 p-6 pt-32'
+      >
       <motion.div 
         variants={itemVariants}
         className='md:col-span-3 md:row-span-3 bento-card bento-card-beige flex flex-col justify-between'
@@ -45,12 +58,12 @@ export default function BentoGrid() {
 
       <motion.div 
         variants={itemVariants} 
-        className='md:col-span-1 md:row-span-4 rounded-4xl overflow-hidden grayscale contrast-125 brightness-75 relative bg-card/10'
+        className='md:col-span-1 md:row-span-4 rounded-4xl overflow-hidden relative bg-card/10'
       >
         <img 
-          src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2000&auto=format&fit=crop' 
+          src='/Mangesh.jpeg' 
           alt='Mangesh Wagh'
-          className='h-full w-full object-cover transition-all duration-1000 hover:scale-110 hover:grayscale-0'
+          className='h-full w-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 hover:scale-105'
         />
         <div className='absolute inset-x-8 bottom-8 text-white font-bold text-2xl uppercase mix-blend-difference italic'>
           M. WAGH — GECA '28
@@ -102,5 +115,6 @@ export default function BentoGrid() {
         </div>
       </motion.div>
     </motion.section>
+  </div>
   );
 }
