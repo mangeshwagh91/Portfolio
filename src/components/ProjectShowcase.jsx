@@ -58,7 +58,7 @@ export default function ProjectShowcase() {
       <div className='flex justify-between items-end'>
         <h2 className='text-swiss text-5xl md:text-[8vw] text-card uppercase leading-[0.8]'>
           PROJECTS <br />
-          PORTFOLIO <span className='italic italic text-card/20'>'24-'26</span>
+          PORTFOLIO <span className='italic text-card/20'>'24-'26</span>
         </h2>
       </div>
 
@@ -81,10 +81,10 @@ export default function ProjectShowcase() {
                     hover: { scale: 1.15, filter: "grayscale(0%)" }
                   }}
                   whileHover="hover"
-                  transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
                   src={project.image} 
                   alt={project.title}
-                  className='h-full w-full object-cover grayscale transition-all duration-1000'
+                  className='h-full w-full object-cover grayscale transition-all'
                />
             </div>
             <div className='flex flex-col gap-2'>
